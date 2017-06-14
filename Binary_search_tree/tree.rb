@@ -2,6 +2,11 @@
 # of a particular node are less than the parent and all nodes
 # on the right are greater than the parent
 
+# Time Complexity
+# => Search: O(log n)
+# => Insertion: O(log n)
+# => Deletion: O(log n)
+
 require_relative 'node'
 require 'byebug'
 
