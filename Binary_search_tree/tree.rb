@@ -90,16 +90,24 @@ class Binary_Search_Tree
   end
 
   def find_bfs(root, value)
+    # Use a queue to store children as they are checked
     queue = [root]
 
+    # while the queue is not empty(all children have been checked)
     while queue.length > 0
+      # Remove the first element from the queue
       current_node = queue.shift
+
+      #if the value of the current_node is equal to the value you are looking for
+      # return that value
       if current_node.value == value
         return current_node
       end
-      queue.push(root.left_child) unless root.left_child == nil
-      queue.push(root.right_child) unless root.right_child == nil
+      # push the children of the current_node into the queue
+      queue.push(current_node.left_child) unless current_node.left_child == nil
+      queue.push(current_node.right_child) unless current_node.right_child == nil
     end
+    # if the value is not found return nil
     nil
   end
 end
@@ -108,5 +116,8 @@ root = Node.new(5)
 tree = Binary_Search_Tree.new()
 tree.add_node(root, 2)
 tree.add_node(root, 10)
+tree.add_node(root, 30)
+
+
 # print tree.find_dfs(root, 5).examine_node
-print tree.find_bfs(root, 10).examine_node
+# print tree.find_bfs(root, 30).examine_node
