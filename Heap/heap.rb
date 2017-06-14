@@ -15,6 +15,10 @@ class Max_Heap
     @heap_store = []
   end
 
+  def peek
+    return @heap_store[0]
+  end
+
   # Add value to the array and call trickle up method
   # pass in last element of the array as the child index
   def add(value)
