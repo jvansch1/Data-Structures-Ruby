@@ -88,13 +88,25 @@ class Binary_Search_Tree
 
     nil
   end
+
+  def find_bfs(root, value)
+    queue = [root]
+
+    while queue.length > 0
+      current_node = queue.shift
+      if current_node.value == value
+        return current_node
+      end
+      queue.push(root.left_child) unless root.left_child == nil
+      queue.push(root.right_child) unless root.right_child == nil
+    end
+    nil
+  end
 end
 
 root = Node.new(5)
 tree = Binary_Search_Tree.new()
 tree.add_node(root, 2)
 tree.add_node(root, 10)
-# tree.preorder_traversal(root)
-# tree.in_order_traversal(root)
-# tree.post_order_traversal(root)
-print tree.find_dfs(root, 10).examine_node
+# print tree.find_dfs(root, 5).examine_node
+print tree.find_bfs(root, 10).examine_node
