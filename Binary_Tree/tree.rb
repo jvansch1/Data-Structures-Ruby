@@ -6,6 +6,8 @@ require_relative 'node'
 
 #This is an example of a binary tree
 
+## Search is in O(n) time because each node must be searched
+
 class Tree
   def initialize(root)
     @root = root
