@@ -3,6 +3,7 @@
 # on the right are greater than the parent
 
 require_relative 'node'
+require 'byebug'
 
 class Binary_Search_Tree
   def initialize
@@ -34,7 +35,7 @@ class Binary_Search_Tree
   end
 
   # Pre-order traversal
-  # print current_node, then left, then right
+  # print root, then left, then right
   def preorder_traversal(root)
     if root == nil
       return nil;
@@ -55,6 +56,8 @@ class Binary_Search_Tree
     in_order_traversal(root.right_child)
   end
 
+  # post_order_traversal
+  # Print left, right, root
   def post_order_traversal(root)
     if root == nil
       return nil
@@ -62,6 +65,28 @@ class Binary_Search_Tree
     in_order_traversal(root.left_child)
     in_order_traversal(root.right_child)
     puts root.value
+  end
+
+  def find_dfs(root, value)
+    # if root is nil return nil
+    if root == nil
+      return nil
+    end
+
+    # if root.value == value then return the root
+    if root.value == value
+      return root
+    end
+
+    [root.left_child, root.right_child].each do |child|
+      # store result in result variable
+      # result will be either node object or nil
+      result = find_dfs(child, value)
+      # return if the result is a node object
+      return result unless result.nil?
+    end
+
+    nil
   end
 end
 
@@ -71,4 +96,5 @@ tree.add_node(root, 2)
 tree.add_node(root, 10)
 # tree.preorder_traversal(root)
 # tree.in_order_traversal(root)
-tree.post_order_traversal(root)
+# tree.post_order_traversal(root)
+print tree.find_dfs(root, 10).examine_node

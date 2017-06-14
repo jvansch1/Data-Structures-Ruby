@@ -9,4 +9,10 @@ class Node
     @left_child = left_child
     @right_child = right_child
   end
+
+  def examine_node
+    puts "value: #{value}"
+    puts "left-child: #{left_child}"
+    puts "right_child: #{right_child}"
+  end
 end
