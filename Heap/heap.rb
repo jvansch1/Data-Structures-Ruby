@@ -46,25 +46,30 @@ class Max_Heap
   def pop
     @heap_store[0], @heap_store[@heap_store.length - 1] = @heap_store[@heap_store.length - 1], @heap_store[0]
     @heap_store.pop()
-    puts @heap_store
     trickle_down(0)
   end
 
   def trickle_down(index)
     parent_value = @heap_store[index]
 
+    # calculate the two child indices
+    # there is a possibility that they could be out of bounds of the heap_store
+    # only push into the child array if the children are not nil
     left_child_index = (2 * index) + 1
     right_child_index = (2 * index) + 2
     children = []
     children << @heap_store[left_child_index] if @heap_store[left_child_index]
     children << @heap_store[right_child_index] if @heap_store[right_child_index]
 
+    # if all the children are less than the parent, you have reached the appropriate place in the heap
     if children.all? { |child| child < parent_value }
       return
     end
 
+    # if there is only one child swap with that one
     if children.length == 1
       swap_index = left_child_index
+    # if both are present, find the greater one and swap with that
     else
       swap_index = children[0] > children[1] ? left_child_index : right_child_index
     end
@@ -83,5 +88,10 @@ heap.add(110)
 heap.add(1000)
 heap.add(20)
 print heap.heap_store
+print "\n"
 heap.pop()
 print heap.heap_store
+print "\n"
+heap.pop()
+print heap.heap_store
+print "\n"
