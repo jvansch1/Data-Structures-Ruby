@@ -57,8 +57,8 @@ class Max_Heap
     parent_value = @heap_store[index]
 
     # calculate the two child indices
-    # there is a possibility that they could be out of bounds of the heap_store
-    # only push into the child array if the children are not nil
+    # =>  there is a possibility that they could be out of bounds of the heap_store
+    # =>  only push into the child array if the children are not nil
     left_child_index = (2 * index) + 1
     right_child_index = (2 * index) + 2
     children = []
