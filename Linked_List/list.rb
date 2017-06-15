@@ -90,5 +90,5 @@ list.add_node(3)
 list.add_node(4)
 # print list.print_list
 # list.remove_head
-list.insert_at_index(100,1)
+list.insert_at_index(100,0)
 print list.print_list
